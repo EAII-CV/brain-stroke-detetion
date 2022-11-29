@@ -5,10 +5,10 @@
 ## Data Collection 
 |class|No. of Patient|No. of Slices|Mask|URL|
 |-|-|-|-|-|
-|Normal|48|1087|-|-|
-|Stroke|30|756|-|-|
-|Acute Ischemic Stroke|398|10972|10972|-|
-|Hemorrhagic Stroke|81|2025|486|-|
+|Normal|48|1087|-|https://physionet.org/content/ct-ich/1.3.1/|
+|Stroke|30|756|-|https://physionet.org/content/ct-ich/1.3.1/|
+|Acute Ischemic Stroke|398|10972|10972|https://github.com/griffinliang/aisd|
+|Hemorrhagic Stroke|81|2025|486|https://www.kaggle.com/datasets/vbookshelf/computed-tomography-ct-images|
 
 ## Data Preprocessing
 
