@@ -3,6 +3,8 @@
 - Classifying brain stroke into 4 groups (normal, ischemia, hemorrhagic, abnormal-non-stroke).
 
 ## Data Collection 
+|class|No. of Patient|No. of Slices|Mask|URL|
+|-|-|-|-|-|
 
 ## Data Preprocessing
 
