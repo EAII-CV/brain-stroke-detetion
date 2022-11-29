@@ -12,11 +12,16 @@
 
 ## Data Preprocessing
 
+- your data preporcessing steps goes here
+
 ## Segmentation Model
 
 ### Development
+-what model used
+-and modification made goes here
 
 ### Evaluation
+- segmentation result report goes here
 
 ## Classification Model
 ### Development
