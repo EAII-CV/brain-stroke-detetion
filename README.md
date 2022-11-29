@@ -17,17 +17,21 @@
 ## Segmentation Model
 
 ### Development
--what model used
--and modification made goes here
+- what model used
+- and modification made goes here
 
 ### Evaluation
 - segmentation result report goes here
 
 ## Classification Model
 ### Development
-
+- what model used
+- and modification made goes here
 ### Evaluation
-
+- classification result report goes here
 ## System
 ### Development 
+- tools used
+- expected result goes here
 ### Deployment
+- link to the deployed app goes here
