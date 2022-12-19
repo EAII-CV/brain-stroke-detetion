@@ -14,3 +14,4 @@ for i in path:
     # multiplication of float values by 255 to obtain Uint8 pixel value of images
     img=img*255
     cv2.imwrite(i,img)
+    # save image to same folder(paths)
