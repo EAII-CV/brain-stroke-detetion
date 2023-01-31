@@ -1,0 +1,64 @@
+from pydicom import dcmread
+import numpy as np
+import os
+import cv2
+from matplotlib import pyplot as plt
+def dicomViewer(path):
+    ds = dcmread(path, force=True)
+    img= ds.pixel_array.astype(float)
+
+    if 'WindowWidth' in ds:
+        #print('Dataset has windowing')
+    # Apply the windowing
+    # Extract the window center and window width
+        # Get the rescale slope and intercept
+        rescale_slope = ds.RescaleSlope
+        rescale_intercept = ds.RescaleIntercept
+
+        # Apply the rescale
+        img = img * rescale_slope + rescale_intercept
+
+        window_center = ds.WindowCenter[0]
+        window_width = ds.WindowWidth[0]
+
+
+        min_value = window_center - 0.5 - (window_width - 1) / 2
+        max_value = window_center - 0.5 + (window_width - 1) / 2
+
+        img[img < min_value] = min_value
+        img[img > max_value] = max_value
+
+    if ds.PhotometricInterpretation == "MONOCHROME1":
+        img = np.amax(img) - img
+
+        #return "windowed"
+    # Convert to uint
+    img=img-np.amin(img)
+    img = (np.maximum(img,0) / img.max()) * 255.0
+    img= np.uint8(img)
+    return img
+
+
+new_names = []
+for dirpath, dirnames, filenames in os.walk('dcm'):
+    for filename in filenames:
+        new_names.append(os.path.join(dirpath, filename))
+
+print(new_names)
+#for img in range (new_names):
+ #   img=dicomViewer(os.path.join(new_names, img))
+
+images = np.stack(new_names, axis=0)
+
+print(type(images))  # <class 'numpy.ndarray'>
+print(images.shape)  # (10, 95, 95)
+
+n_images = images.shape[0]
+
+# Show the images (using cv2.imshow instead of matplotlib)
+for i in range(n_images):
+    x = os.path.join(images[i])
+    img=dicomViewer(x)
+    name = os.path.splitext(x)[0]  # e.g. MyPhoto
+    cv2.imwrite('D:\AI_Ethiopia\dcm'+str(i)+".jpg", img)
+    
