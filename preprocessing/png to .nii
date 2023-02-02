@@ -1,0 +1,19 @@
+## To convert stack of images into .nii format
+import glob
+import os
+import SimpleITK as sitk
+parent_dir ="/content/drive/MyDrive/sampleischemicdata"
+for j in os.listdir(parent_dir):
+# lists of patients in normal folder
+    #print("Patient",j,"have ")
+    for x in (glob.glob('/content/drive/MyDrive/sampleischemicdata/'+j +'/'+'/*')):
+      print (x)
+      # A folder path for each patients
+      pth=glob.glob(x + '/Scan' + '/*.png')
+      name = x.split("/")[-1].split(".")[0]    # to split the name of the image from the format
+      print(name)
+      print(pth)
+      reader = sitk.ImageSeriesReader()
+      reader.SetFileNames(pth)
+      vol = reader.Execute()
+      sitk.WriteImage(vol, f"{name}.nii.gz")  
